@@ -13,5 +13,17 @@ export const resolvers = {
 
       return articles;
     }
+  },
+  Mutation:{
+    //dinh nghia ra ham them, sua, xoa bai viet:
+    createArticle: async (_, args)=>{
+            // console.log(args);
+            const { article } = args;
+            
+            const record = new Article(article);
+            await record.save(); //luu lai ban ghi
+
+            return record;
+    }
   }
 }
