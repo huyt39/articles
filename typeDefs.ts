@@ -37,5 +37,8 @@ export const typeDefs = gql`
     updateArticle(id: ID, article: ArticleInput): Article,
 
     createCategory(category: CategoryInput): Category,
+    deleteCategory(id: ID): String,
+    updateCategory(id: ID, category: CategoryInput): Category,
+
   }
 `;

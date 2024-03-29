@@ -68,5 +68,30 @@ export const resolvers = {
 
       return record;
 },
+deleteCategory: async (_,args)=>{
+  const { id } = args;
+  // console.log(id);
+  await Category.updateOne({
+    _id: id
+  },{
+    deleted: true,
+    deletedAt: new Date()
+  });
+
+  return "Đã xoá!";
+},
+updateCategory: async (_, args) => {
+  // console.log(args);
+  const { id, category } = args;
+  await Category.updateOne({      //update trong db
+    _id: id   
+  }, category);
+
+  const newData = await Category.findOne({  //lay ban ghi do trong db
+    _id: id
+  });
+
+  return newData;  //tra ra object
+},
   }
 }
