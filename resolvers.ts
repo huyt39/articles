@@ -36,6 +36,19 @@ export const resolvers = {
       });
 
       return "Đã xoá!";
+    },
+    updateArticle: async (_, args) => {
+      // console.log(args);
+      const { id, article } = args;
+      await Article.updateOne({      //update trong db
+        _id: id   
+      }, article);
+
+      const newData = await Article.findOne({  //lay ban ghi do trong db
+        _id: id
+      });
+
+      return newData;  //tra ra object
     }
   }
 }
