@@ -1,5 +1,6 @@
 //resolvers de giai quyet van de
 import Article from "./models/article.model";
+import Category from "./models/category.model";
 
 export const resolvers = {
   Query: {
@@ -12,6 +13,13 @@ export const resolvers = {
       });
 
       return articles;
+    },
+    getListCategory: async () => {
+      const categories = await Category.find({
+        deleted: false
+      });
+
+      return categories;
     }
   },
   Mutation:{
