@@ -24,6 +24,18 @@ export const resolvers = {
             await record.save(); //luu lai ban ghi
 
             return record;
+    },
+    deleteArticle: async (_,args)=>{
+      const { id } = args;
+      // console.log(id);
+      await Article.updateOne({
+        _id: id
+      },{
+        deleted: true,
+        deletedAt: new Date()
+      });
+
+      return "Đã xoá!";
     }
   }
 }
