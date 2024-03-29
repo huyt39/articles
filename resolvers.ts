@@ -57,6 +57,16 @@ export const resolvers = {
       });
 
       return newData;  //tra ra object
-    }
+    },
+
+    createCategory: async (_, args)=>{
+      // console.log(args);
+      const { category} = args;
+      
+      const record = new Category(category);
+      await record.save(); //luu lai ban ghi
+
+      return record;
+},
   }
 }
