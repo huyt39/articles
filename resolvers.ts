@@ -22,6 +22,18 @@ export const resolvers = {
       return categories;
     }
   },
+  Article:{
+    //viet logic cho phan category, tra ve 1 object:
+    category: async (article) => {
+      // console.log(article);
+      const { categoryId } = article; //lay ra id cua bai viet dang lap den
+      const category = await Category.findOne({
+        _id: categoryId
+      })
+      return category; //return den object nay thi lay object nay gan cho bien
+      //category o trong type Article cua file typeDefs
+    }
+  },
   Mutation:{
     //dinh nghia ra ham them, sua, xoa bai viet:
     createArticle: async (_, args)=>{
