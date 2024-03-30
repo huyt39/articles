@@ -2,9 +2,11 @@ import express, { Express} from "express";
 import dotenv from "dotenv";
 import { connect as connectDatabase } from "./config/database";
 import {ApolloServer} from "apollo-server-express";
-import { typeDefs } from "./typeDefs";
+// import { typeDefs } from "./typeDefs";
 import { resolvers } from "./resolvers";
-
+// import { typeDefsArticle } from "./typeDefs/article.typeDefs";
+// import { typeDefsCategory } from "./typeDefs/catgory.typeDefs";
+import { typeDefs } from "./typeDefs/index.typeDefs";
 
 
 const startServer = async () => {
@@ -32,6 +34,7 @@ const startServer = async () => {
   
   //khoi tao apollo sv:
   const apolloServer = new ApolloServer({
+    // typeDefs  [typeDefsArticle, typeDefsCategory],
     typeDefs,
     resolvers
   });
