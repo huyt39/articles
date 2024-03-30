@@ -3,10 +3,11 @@ import dotenv from "dotenv";
 import { connect as connectDatabase } from "./config/database";
 import {ApolloServer} from "apollo-server-express";
 // import { typeDefs } from "./typeDefs";
-import { resolvers } from "./resolvers";
+// import { resolvers } from "./resolvers";
 // import { typeDefsArticle } from "./typeDefs/article.typeDefs";
 // import { typeDefsCategory } from "./typeDefs/catgory.typeDefs";
 import { typeDefs } from "./typeDefs/index.typeDefs";
+import { resolvers } from "./resolvers/index.resolvers";
 
 
 const startServer = async () => {
