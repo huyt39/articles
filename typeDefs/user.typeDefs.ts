@@ -21,9 +21,15 @@ export const typeDefsUer = gql`
     password: String
   }
 
+  input LoginUserInput{ 
+    email: String,
+    password: String
+  }
+
 # tra ra nhung thong tin thuoc User(o tren) khi dang ky thanh cong
   type Mutation{
     registerUser(user: RegisterUserInput): User,
+    loginUser(user: LoginUserInput): User,
     
   }
 `;
