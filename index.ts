@@ -41,6 +41,7 @@ const startServer = async () => {
     // typeDefs  [typeDefsArticle, typeDefsCategory],
     typeDefs,
     resolvers,
+    introspection: true, //de day code len online thi van goi y code
     context: ({req})=>{    //nhan duoc req,res...
       return {...req};    //dau 3 cham de nhan ban object=>ben getUser cua resolvers nhan duoc context la req
     }
