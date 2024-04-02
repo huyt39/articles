@@ -13,6 +13,10 @@ export const typeDefsUer = gql`
     code: Int,
     message: String
   } 
+
+type Query {
+    getUser(id: ID): User
+}
   
 #   khi dang ky tai khoan thi can nhap nhung thong tin gi
   input RegisterUserInput{ 

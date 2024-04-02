@@ -4,6 +4,33 @@ import User from "../models/user.model";
 import { generateRandomString } from "../helpers/generate.helper";
 
 export const resolversUser = {
+
+    Query: {
+        getUser: async (_, args) => {
+          const { id } = args;
+    
+          const infoUser = await User.findOne({
+            _id: id,
+            deleted: false
+          });
+    
+          if(!infoUser) {
+            return {
+              code: 400,
+              message: "User không tồn tại!"
+            }
+          } else {
+            return {
+              code: 200,
+              message: "Thành công!",
+              id: infoUser.id,
+              fullName: infoUser.fullName,
+              email: infoUser.email,
+              token: infoUser.token,
+            };
+          }
+        }
+      },
   
   
   Mutation:{
