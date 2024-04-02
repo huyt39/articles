@@ -15,7 +15,7 @@ export const typeDefsUer = gql`
   } 
 
 type Query {
-    getUser(id: ID): User
+    getUser: User
 }
   
 #   khi dang ky tai khoan thi can nhap nhung thong tin gi

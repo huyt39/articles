@@ -6,11 +6,11 @@ import { generateRandomString } from "../helpers/generate.helper";
 export const resolversUser = {
 
     Query: {
-        getUser: async (_, args) => {
-          const { id } = args;
-    
+        getUser: async (_, args, context) => {
+        //   const { id } = args; //co the bo id
+          if(context.tokenVerify){
           const infoUser = await User.findOne({
-            _id: id,
+            token: context.tokenVerify,
             deleted: false
           });
     
@@ -29,6 +29,12 @@ export const resolversUser = {
               token: infoUser.token,
             };
           }
+        }else{
+            return{
+            code: 400,
+            message: "Không có quyền truy cập!"
+        }
+        }
         }
       },
   
