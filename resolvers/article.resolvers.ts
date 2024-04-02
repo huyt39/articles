@@ -6,7 +6,7 @@ export const resolversArticle = {
   Query: {
     
     getListArticle: async (_,args) => {
-      const { sortKey, sortValue, currentPage, limitItems, filterKey, filterValue } = args;
+      const { sortKey, sortValue, currentPage, limitItems, filterKey, filterValue, keyword } = args;
       const find={
         deleted: false
       };
@@ -26,6 +26,13 @@ export const resolversArticle = {
         find[filterKey] = filterValue;
       }
 // End Filter
+
+//Search
+      if(keyword){
+        const regex = new RegExp(keyword,"i"); //i de phan biet chu hoa-thuong
+        find["title"] = regex; //tim kiem theo tieu de
+      }
+//End Search
 
 
       const articles = await Article.find(find)
